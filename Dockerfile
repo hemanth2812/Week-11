@@ -1,5 +1,13 @@
 FROM openjdk:17-jdk-alpine
-WORKDIR /usr/src/HelloWorld
+
+# Set working directory
+WORKDIR /src/HelloWorld
+
+# Copy source code
 COPY src/HelloWorld/HelloWorld.java .
+
+# Compile the Java file
 RUN javac HelloWorld.java
-CMD ["java", "HelloWorld"]
+
+# Set the correct classpath and entry point
+CMD ["java", "-cp", ".", "HelloWorld"]
